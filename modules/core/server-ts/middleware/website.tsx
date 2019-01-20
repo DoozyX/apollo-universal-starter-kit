@@ -124,7 +124,7 @@ const renderServerSide = async (req: any, res: any, schema: GraphQLSchema, modul
     const sheet = new ServerStyleSheet();
     const htmlProps: HtmlProps = {
       content: ReactDOMServer.renderToString(sheet.collectStyles(App)),
-      css: sheet.getStyleElement().map((el, idx) => (el ? React.cloneElement(el, { key: idx }) : el)),
+      css: sheet.getStyleElement().map((el: any, idx: any) => (el ? React.cloneElement(el, { key: idx }) : el)),
       helmet: Helmet.renderStatic(), // Avoid memory leak while tracking mounted instances
       state: { ...client.cache.extract() }
     };

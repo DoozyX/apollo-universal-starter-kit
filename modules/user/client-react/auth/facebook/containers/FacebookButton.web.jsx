@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withApollo } from 'react-apollo';
-import faFacebookSquare from '@fortawesome/fontawesome-free-brands/faFacebookSquare';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '@module/look-client-react';
 
 import access from '../../../access';
@@ -43,7 +44,7 @@ const FacebookIcon = withApollo(({ client }) => {
   );
 });
 
-const FacebookComponent = ({ text, type }) => {
+const FacebookComponent = (text, type) => {
   switch (type) {
     case 'button':
       return <FacebookButton text={text} />;
@@ -54,6 +55,11 @@ const FacebookComponent = ({ text, type }) => {
     default:
       return <FacebookButton text={text} />;
   }
+};
+
+FacebookComponent.propTypes = {
+  text: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default FacebookComponent;

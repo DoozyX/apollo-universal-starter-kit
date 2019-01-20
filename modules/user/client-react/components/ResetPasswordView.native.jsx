@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 import { translate } from '@module/i18n-client-react';
 
-import ResetPasswordForm from '../components/ResetPasswordForm';
+import ResetPasswordForm from './ResetPasswordForm';
 
 class ResetPasswordView extends React.Component {
   static propTypes = {

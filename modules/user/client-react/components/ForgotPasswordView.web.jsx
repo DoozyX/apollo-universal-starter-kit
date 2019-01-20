@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { translate } from '@module/i18n-client-react';
 import { LayoutCenter, PageLayout } from '@module/look-client-react';
 
-import ForgotPasswordForm from '../components/ForgotPasswordForm';
+import ForgotPasswordForm from './ForgotPasswordForm';
 import settings from '../../../../settings';
 
 class ForgotPasswordView extends React.Component {

@@ -1,6 +1,6 @@
 import { createBatchResolver } from 'graphql-resolve-batch';
 import { PubSub } from 'graphql-subscriptions';
-import { TranslationFunction } from 'i18next';
+import i18next from 'i18next';
 import ServerModule from '@module/module-server-ts';
 import { FileSystemStorage, UploadFileStream } from '@module/upload-server-ts';
 
@@ -11,7 +11,7 @@ const MESSAGES_SUBSCRIPTION = 'messages_subscription';
 
 interface ChatContext {
   Chat: ChatDAO;
-  req?: Request & { t: TranslationFunction };
+  req?: Request & { t: i18next.TranslationFunction };
   user?: any; // TODO: Add user type after converting the UserDAO into TS
 }
 

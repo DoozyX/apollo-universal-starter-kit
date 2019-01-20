@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withApollo } from 'react-apollo';
-import faGooglePlusSquare from '@fortawesome/fontawesome-free-brands/faGooglePlusSquare';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faGooglePlusSquare } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '@module/look-client-react';
 import access from '../../../access';
 import './GoogleButton.css';
@@ -42,7 +43,7 @@ const GoogleIcon = withApollo(({ client }) => {
   );
 });
 
-const GoogleComponent = ({ type, text }) => {
+const GoogleComponent = (type, text) => {
   switch (type) {
     case 'button':
       return <GoogleButton text={text} />;
@@ -53,6 +54,11 @@ const GoogleComponent = ({ type, text }) => {
     default:
       return <GoogleButton text={text} />;
   }
+};
+
+GoogleComponent.propTypes = {
+  text: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default GoogleComponent;

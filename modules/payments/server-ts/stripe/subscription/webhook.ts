@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { TranslationFunction } from 'i18next';
+import i18next from 'i18next';
 import { mailer } from '@module/mailer-server-ts';
 
 import StripeSubscriptionDAO from './sql';
@@ -34,7 +34,7 @@ const sendEmailToUser = async (userId: number, subject: string, html: string) =>
  * @param websiteUrl - The URL of the subscription page to be sent in the email.
  * @param t - The translate function.
  */
-const deleteSubscription = async (stripeEvent: any, websiteUrl: string, t: TranslationFunction) => {
+const deleteSubscription = async (stripeEvent: any, websiteUrl: string, t: i18next.TranslationFunction) => {
   const subscription = await StripeSubscription.getSubscriptionByStripeSubscriptionId(stripeEvent.data.object.id);
 
   if (subscription) {
@@ -68,7 +68,7 @@ const deleteSubscription = async (stripeEvent: any, websiteUrl: string, t: Trans
  * @param websiteUrl - The URL of the subscription page to be sent in the email.
  * @param t - The translate function.
  */
-const notifyFailedSubscription = async (stripeEvent: any, websiteUrl: string, t: TranslationFunction) => {
+const notifyFailedSubscription = async (stripeEvent: any, websiteUrl: string, t: i18next.TranslationFunction) => {
   const subscription = await StripeSubscription.getSubscriptionByStripeCustomerId(stripeEvent.data.object.customer);
 
   if (subscription) {

@@ -3,8 +3,8 @@ import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
-import createHistory from 'history/createBrowserHistory';
-import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
+import { createBrowserHistory } from 'history';
+import { ConnectedRouter, routerMiddleware } from 'connected-react-router';
 import ReactGA from 'react-ga';
 import { apiUrl } from '@module/core-common';
 import ClientModule from '@module/module-client-react';
@@ -23,6 +23,7 @@ const ref: { modules: ClientModule; client: ApolloClient<any>; store: Store } = 
   store: null
 };
 
+const history = createBrowserHistory();
 export const onAppCreate = (modules: ClientModule, entryModule: NodeModule) => {
   ref.modules = modules;
   ref.client = createApolloClient({
@@ -34,13 +35,11 @@ export const onAppCreate = (modules: ClientModule, entryModule: NodeModule) => {
   });
   if (entryModule.hot && entryModule.hot.data && entryModule.hot.data.store) {
     ref.store = entryModule.hot.data.store;
-    ref.store.replaceReducer(getStoreReducer(ref.modules.reducers));
+    ref.store.replaceReducer(getStoreReducer(ref.modules.reducers, history));
   } else {
     ref.store = createReduxStore(ref.modules.reducers, {}, ref.client, routerMiddleware(history));
   }
 };
-
-const history = createHistory();
 const logPageView = (location: any) => {
   ReactGA.set({ page: location.pathname });
   ReactGA.pageview(location.pathname);

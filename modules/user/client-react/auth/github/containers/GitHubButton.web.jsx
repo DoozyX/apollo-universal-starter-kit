@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withApollo } from 'react-apollo';
-import faGithubSquare from '@fortawesome/fontawesome-free-brands/faGithubSquare';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '@module/look-client-react';
 
 import access from '../../../access';
@@ -43,7 +44,7 @@ const GitHubIcon = withApollo(({ client }) => {
   );
 });
 
-const GithubComponent = ({ text, type }) => {
+const GithubComponent = (text, type) => {
   switch (type) {
     case 'button':
       return <GitHubButton text={text} />;
@@ -54,6 +55,11 @@ const GithubComponent = ({ text, type }) => {
     default:
       return <GitHubButton text={text} />;
   }
+};
+
+GithubComponent.propTypes = {
+  text: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default GithubComponent;

@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { translate } from '@module/i18n-client-react';
 import { LayoutCenter, PageLayout } from '@module/look-client-react';
 
-import RegisterForm from '../components/RegisterForm';
+import RegisterForm from './RegisterForm';
 
 import settings from '../../../../settings';
 

@@ -1,4 +1,4 @@
-import i18next, { i18n as I18N, Resource } from 'i18next';
+import i18next from 'i18next';
 import CommonModule from '@module/module-common';
 import settings from '../../../settings';
 import './init';
@@ -7,9 +7,10 @@ import './init';
  * Adds resources into the i18next bundle
  *
  * @param i18n - i18next
+ *
  * @param resources - The resources to add
  */
-const addResourcesI18n = (i18n: I18N, resources: Array<{ ns: string; resources: Resource }>) => {
+const addResourcesI18n = (i18n: i18next.i18n, resources: Array<{ ns: string; resources: i18next.Resource }>) => {
   for (const localization of resources) {
     for (const lang of Object.keys(localization.resources)) {
       i18n.addResourceBundle(

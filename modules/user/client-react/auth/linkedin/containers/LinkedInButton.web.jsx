@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withApollo } from 'react-apollo';
-import faLinkedInSquare from '@fortawesome/fontawesome-free-brands/faLinkedin';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '@module/look-client-react';
 import access from '../../../access';
 import './LinkedInButton.css';
@@ -14,7 +15,7 @@ const LinkedInButton = withApollo(({ client, text }) => {
   return (
     <Button type="button" size="lg" onClick={() => access.doLogin(client).then(linkedInLogin)} className="linkedInBtn">
       <div className="iconContainer">
-        <FontAwesomeIcon icon={faLinkedInSquare} className="linkedInIcon" />
+        <FontAwesomeIcon icon={faLinkedin} className="linkedInIcon" />
         <div className="separator" />
       </div>
       <div className="btnText">
@@ -35,14 +36,14 @@ const LinkedInLink = withApollo(({ client, text }) => {
 const LinkedInIcon = withApollo(({ client }) => {
   return (
     <FontAwesomeIcon
-      icon={faLinkedInSquare}
+      icon={faLinkedin}
       style={{ marginTop: 10, color: '#3B5998', fontSize: 40 }}
       onClick={() => access.doLogin(client).then(linkedInLogin)}
     />
   );
 });
 
-const LinkedInComponent = ({ text, type }) => {
+const LinkedInComponent = (text, type) => {
   switch (type) {
     case 'button':
       return <LinkedInButton text={text} />;
@@ -53,6 +54,11 @@ const LinkedInComponent = ({ text, type }) => {
     default:
       return <LinkedInButton text={text} />;
   }
+};
+
+LinkedInComponent.propTypes = {
+  text: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default LinkedInComponent;

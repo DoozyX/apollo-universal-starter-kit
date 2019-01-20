@@ -6,7 +6,7 @@ import { translate } from '@module/i18n-client-react';
 import settings from '../../../../settings';
 
 import PaginationDemoView from '../components/PaginationDemoView.web';
-import withDataProvider from '../containers/DataProvider';
+import withDataProvider from './DataProvider';
 
 @translate('pagination')
 class PaginationDemo extends React.Component {

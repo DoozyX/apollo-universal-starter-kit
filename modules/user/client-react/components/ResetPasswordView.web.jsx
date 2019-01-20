@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { translate } from '@module/i18n-client-react';
 import { PageLayout } from '@module/look-client-react';
 
-import ResetPasswordForm from '../components/ResetPasswordForm';
+import ResetPasswordForm from './ResetPasswordForm';
 
 import settings from '../../../../settings';
 

@@ -1,9 +1,9 @@
-import { Resource } from 'i18next';
+import i18next from 'i18next';
 
 import Module, { ModuleShape } from './Module';
 
 export interface CommonModuleShape extends ModuleShape {
-  localization?: Array<{ ns: string; resources: Resource }>;
+  localization?: Array<{ ns: string; resources: i18next.Resource }>;
 }
 
 interface CommonModule extends CommonModuleShape {}

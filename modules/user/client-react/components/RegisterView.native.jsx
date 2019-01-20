@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 import { translate } from '@module/i18n-client-react';
 
-import RegisterForm from '../components/RegisterForm';
+import RegisterForm from './RegisterForm';
 
 class RegisterView extends React.PureComponent {
   static propTypes = {
