@@ -7,7 +7,6 @@ import './init';
  * Adds resources into the i18next bundle
  *
  * @param i18n - i18next
- *
  * @param resources - The resources to add
  */
 const addResourcesI18n = (i18n: i18next.i18n, resources: Array<{ ns: string; resources: i18next.Resource }>) => {
